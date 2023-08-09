@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNetCore.Http.Extensions
-
 @{
     if (ViewBag.TitlePrefix is not null)
         ViewBag.Title = $"{ViewBag.TitlePrefix} — Meowy";
@@ -34,7 +33,7 @@
     }
     else
     {
-        <link rel="stylesheet" href="~/css/content-page.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/content-page.css" asp-append-version="true"/>
     }
     @if (IsSectionDefined("Scripts"))
     {
@@ -46,56 +45,58 @@
     }
 </head>
 <body>
-    <header class="nav-menu">
-        <a asp-page="/Index" class="nav-menu__title" title="Meowy">Meowy</a>
-        <div class="nav-menu__menu-button">
-            <svg class="icon menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @@fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg>
-        </div>
-        <nav class="nav-menu__links-wrapper">
-            <a asp-page="/About/Index" title="О нас">О нас</a>
-            <a asp-page="/Visit/Index" title="Посещение">Посещение</a>
-            <a asp-page="/Menu" title="Меню">Меню</a>
-            <a asp-page="/Events" title="Мероприятия">Мероприятия</a>
-            <a asp-page="/About/Index" asp-fragment="contact" title="Контакты">Контакты</a>
-        </nav>
-        <hr />
-    </header>
-    <main>
-        @RenderBody()
-    </main>
-    <footer>
+<header class="nav-menu">
+    <a asp-page="/Index" class="nav-menu__title" title="Meowy">Meowy</a>
+    <div class="nav-menu__menu-button">
+        <svg class="icon menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <!--! Font Awesome Pro 6.4.0 by @@fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+        </svg>
+    </div>
+    <nav class="nav-menu__links-wrapper">
+        <a asp-page="/About/Index" title="О нас">О нас</a>
+        <a asp-page="/Visit/Index" title="Посещение">Посещение</a>
+        <a asp-page="/Menu" title="Меню">Меню</a>
+        <a asp-page="/Events" title="Мероприятия">Мероприятия</a>
+        <a asp-page="/About/Index" asp-fragment="contact" title="Контакты">Контакты</a>
+    </nav>
+    <hr/>
+</header>
+<main>
+    @RenderBody()
+</main>
+<footer>
+    <div>
+        <a class="link-caption" asp-page="/Index" title="Meowy">Meowy</a>
+        <p>&copy; 2023 Егор Бояркин. Все права защищены. Сделано в образовательных целях.</p>
+        <a class="link-button" asp-page="/Attribution" title="Атрибуция ресурсов">Атрибуция ресурсов</a>
+    </div>
+    <div class="site-map">
         <div>
-            <a class="link-caption" asp-page="/Index" title="Meowy">Meowy</a>
-            <p>&copy; 2023 Егор Бояркин. Все права защищены. Сделано в образовательных целях.</p>
-            <a class="link-button" asp-page="/Attribution" title="Атрибуция ресурсов">Атрибуция ресурсов</a>
+            <a asp-page="/Index" title="Главная">Главная</a>
+            <a asp-page="/Index" asp-fragment="book" title="Забронировать столик">Забронировать столик</a>
         </div>
-        <div class="site-map">
-            <div>
-                <a asp-page="/Index" title="Главная">Главная</a>
-                <a asp-page="/Index" asp-fragment="book" title="Забронировать столик">Забронировать столик</a>
-            </div>
-            <div>
-                <a asp-page="/About/Index" title="О нас">О нас</a>
-                <a asp-page="/About/Index" asp-fragment="contact" title="Контакты">Контакты</a>
-                <a asp-page="/About/Gallery" title="Галерея">Галерея</a>
-            </div>
-            <div>
-                <a asp-page="/Visit/Index" title="Посещение">Посещение</a>
-                <a asp-page="/Visit/Index" asp-fragment="working-hours" title="Время работы">Время работы</a>
-                <a asp-page="/Visit/Index" asp-fragment="location" title="Местоположение">Местоположение</a>
-                <a asp-page="/Visit/Index" asp-fragment="faq" title="Частые вопросы">Частые вопросы</a>
-            </div>
-            <div>
-                <a asp-page="/Menu" title="Меню">Меню</a>
-                <a asp-page="/Menu" asp-fragment="main" title="Основные блюда">Основные блюда</a>
-                <a asp-page="/Menu" asp-fragment="desserts" title="Десерты">Десерты</a>
-                <a asp-page="/Menu" asp-fragment="drinks-and-beverages" title="Напитки">Напитки</a>
-            </div>
-            <div>
-                <a asp-page="/Events" title="Мероприятия">Мероприятия</a>
-                <a asp-page="/Events" asp-fragment="recurring" title="Повторяющиеся">Повторяющиеся</a>
-            </div>
+        <div>
+            <a asp-page="/About/Index" title="О нас">О нас</a>
+            <a asp-page="/About/Index" asp-fragment="contact" title="Контакты">Контакты</a>
+            <a asp-page="/About/Gallery" title="Галерея">Галерея</a>
         </div>
-    </footer>
+        <div>
+            <a asp-page="/Visit/Index" title="Посещение">Посещение</a>
+            <a asp-page="/Visit/Index" asp-fragment="working-hours" title="Время работы">Время работы</a>
+            <a asp-page="/Visit/Index" asp-fragment="location" title="Местоположение">Местоположение</a>
+            <a asp-page="/Visit/Index" asp-fragment="faq" title="Частые вопросы">Частые вопросы</a>
+        </div>
+        <div>
+            <a asp-page="/Menu" title="Меню">Меню</a>
+            <a asp-page="/Menu" asp-fragment="main" title="Основные блюда">Основные блюда</a>
+            <a asp-page="/Menu" asp-fragment="desserts" title="Десерты">Десерты</a>
+            <a asp-page="/Menu" asp-fragment="drinks-and-beverages" title="Напитки">Напитки</a>
+        </div>
+        <div>
+            <a asp-page="/Events" title="Мероприятия">Мероприятия</a>
+            <a asp-page="/Events" asp-fragment="recurring" title="Повторяющиеся">Повторяющиеся</a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

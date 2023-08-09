@@ -17,12 +17,10 @@ public class ErrorModel : PageModel
         ReasonPhrase = ReasonPhraseFromCode(code);
     }
 
-    public string ReasonPhraseFromCode(int code)
-    {
-        return code switch
+    public string ReasonPhraseFromCode(int code) =>
+        code switch
         {
             404 => "Страница не найдена",
             _ => ReasonPhrases.GetReasonPhrase(code)
         };
-    }
 }

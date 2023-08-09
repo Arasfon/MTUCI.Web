@@ -9,19 +9,19 @@ import clean from "gulp-clean";
 
 import sourcemaps from "gulp-sourcemaps";
 
-import { exec } from "child_process";
+import {exec} from "child_process";
 
 gulp.task("less:debug",
-    function() {
+    function () {
         return gulp.src("./wwwroot/css/**/*.less")
             .pipe(sourcemaps.init())
             .pipe(less())
-            .pipe(sourcemaps.write("./", { sourceRoot: "/css" }))
+            .pipe(sourcemaps.write("./", {sourceRoot: "/css"}))
             .pipe(gulp.dest("./wwwroot/css"));
     });
 
 gulp.task("less:debug:exec",
-    function() {
+    function () {
         return exec("gulp less:debug", (error, stdout, stderr) => {
             if (error) {
                 console.error(`${error.message}`);
@@ -38,7 +38,7 @@ gulp.task("less:debug:exec",
     });
 
 gulp.task("less:minified",
-    function() {
+    function () {
         return gulp.src("./wwwroot/css/**/*.less")
             .pipe(less())
             .pipe(cleanCss())
@@ -46,7 +46,7 @@ gulp.task("less:minified",
     });
 
 gulp.task("less:clean",
-    function() {
+    function () {
         return gulp.src("./wwwroot/css/**/*.less")
             .pipe(extReplace(".css"))
             .pipe(clean())
@@ -58,7 +58,7 @@ gulp.task("less:release",
     gulp.series("less:clean", "less:minified"));
 
 gulp.task("rollup:debug",
-    function() {
+    function () {
         return exec("npx rollup -c --environment BUNDLE_TYPE:debug", (error, stdout, stderr) => {
             if (error) {
                 console.error(`${error.message}`);
@@ -75,7 +75,7 @@ gulp.task("rollup:debug",
     });
 
 gulp.task("rollup:release",
-    function() {
+    function () {
         return exec("npx rollup -c", (error, stdout, stderr) => {
             if (error) {
                 console.error(`${error.message}`);
@@ -92,7 +92,7 @@ gulp.task("rollup:release",
     });
 
 gulp.task("rollup:clean:js",
-    function() {
+    function () {
         return gulp.src("./wwwroot/js/**/*.ts")
             .pipe(extReplace(".js"))
             .pipe(clean())
@@ -101,7 +101,7 @@ gulp.task("rollup:clean:js",
     });
 
 gulp.task("rollup:clean:chunks",
-    function() {
+    function () {
         return gulp.src("./wwwroot/js/chunks/**/*")
             .pipe(clean());
     });
@@ -113,7 +113,7 @@ gulp.task("clean",
     gulp.parallel("less:clean", "rollup:clean"));
 
 gulp.task("watch",
-    function() {
+    function () {
         gulp.watch("./wwwroot/css/**/*.less", gulp.series("less:debug:exec"));
         gulp.watch("./wwwroot/js/**/*[!.d].ts", gulp.series("rollup:debug"));
     });

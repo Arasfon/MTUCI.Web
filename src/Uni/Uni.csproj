@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\js\chunks\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="wwwroot\js\chunks\"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.5.2" />
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />
-    <PackageReference Include="WebMarkupMin.AspNetCore7" Version="2.13.9" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="11.5.2"/>
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2"/>
+        <PackageReference Include="WebMarkupMin.AspNetCore7" Version="2.13.9"/>
+    </ItemGroup>
 
 </Project>

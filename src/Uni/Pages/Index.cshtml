@@ -6,7 +6,7 @@
 
 @section Styles
 {
-    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true"/>
 }
 
 @section Scripts
@@ -20,28 +20,28 @@
         <p class="hero-section__description">Всё, что нужно для хорошего отдыха – здесь: приятная музыка, вкусная еда и очень-очень милые коты и кошки, которые сделают всё возможное, чтобы вы остались счастливы.</p>
         <a asp-fragment="book" class="link-button" title="Забронируйте место →">Забронируйте место →</a>
     </div>
-    <img class="hero-section__image" alt="Фото кота на стуле" src="/img/hero.webp" />
+    <img class="hero-section__image" alt="Фото кота на стуле" src="/img/hero.webp"/>
 </section>
 <div class="light-wrapper">
     <section class="centered-section">
         <h2>О нас: едим, спим и играем</h2>
         <div class="grid-wrap">
             <div class="card">
-                <img class="card__image" alt="Фото панкейков" src="/img/pancakes.webp" />
+                <img class="card__image" alt="Фото панкейков" src="/img/pancakes.webp"/>
                 <div class="card__text-wrapper">
                     <h3>Перекус</h3>
                     <p class="card__description">Наши кошачьи обитатели очень любят вкусные лакомства. Вы можете их угостить прямо здесь. Но не переживайте, для вас у нас тоже припасены особенные блюда.</p>
                 </div>
             </div>
             <div class="card">
-                <img class="card__image" alt="Фото кота на диване" src="/img/rest.webp" />
+                <img class="card__image" alt="Фото кота на диване" src="/img/rest.webp"/>
                 <div class="card__text-wrapper">
                     <h3>Отдых</h3>
                     <p class="card__description">Для всех и каждого найдётся место приятно полежать и вытянуться – как для котиков, так и для вас.</p>
                 </div>
             </div>
             <div class="card">
-                <img class="card__image" alt="Фото игральных костей" src="/img/game.webp" />
+                <img class="card__image" alt="Фото игральных костей" src="/img/game.webp"/>
                 <div class="card__text-wrapper">
                     <h3>Развлечения</h3>
                     <p class="card__description">Игры – неотъемлемая часть досуга, поэтому и для вас, и для пушистых нарушителей спокойствия припасено всё, чтобы оставаться счастливым.</p>
@@ -56,10 +56,10 @@
         <p>У нас можно найти блюда на любой вкус и цвет, не важно, зашли ли вы выпить кофе, или же целостно перекусить в компании котиков.</p>
         <a asp-page="/Menu" class="link-button" title="Подробнее →">Подробнее →</a>
     </div>
-    <img alt="Фото кофе с пирожными" src="/img/menu.webp" />
+    <img alt="Фото кофе с пирожными" src="/img/menu.webp"/>
 </section>
 <section class="double-column-section contain">
-    <img alt="Фото котят в корзинке на природе" src="/img/events.webp" />
+    <img alt="Фото котят в корзинке на природе" src="/img/events.webp"/>
     <div class="double-column-section__text-wrapper">
         <h2>Мероприятия</h2>
         <p>У нас часто проходят мероприятия:</p>
@@ -140,13 +140,13 @@
         <p>Мы позвоним или напишем Вам для подтверждения бронирования.</p>
         <form id="bookForm" class="book-section__form" asp-controller="Book" asp-action="Post" method="post">
             <label for="bookName">Введите Ваше имя:</label>
-            <input id="bookName" name="name" type="text" required maxlength="100" placeholder="Имя" />
+            <input id="bookName" name="name" type="text" required maxlength="100" placeholder="Имя"/>
             <label for="bookTel">свой номер телефона:</label>
-            <input id="bookTel" type="tel" name="phone" required pattern="\+?\(?[0-9]{3}\)?[\-\s\.]?[0-9]{3}[\-\s\.]?[0-9]{4,6}" placeholder="Номер телефона" />
+            <input id="bookTel" type="tel" name="phone" required pattern="\+?\(?[0-9]{3}\)?[\-\s\.]?[0-9]{3}[\-\s\.]?[0-9]{4,6}" placeholder="Номер телефона"/>
             <label for="datetime">и день и время бронирования:</label>
-            <input id="datetime" type="text" name="date" required placeholder="Дата и время" />
+            <input id="datetime" type="text" name="date" required placeholder="Дата и время"/>
             <div>
-                <input type="checkbox" id="callOrMessageOnBook" name="message" />
+                <input type="checkbox" id="callOrMessageOnBook" name="message"/>
                 <label for="callOrMessageOnBook">Писать в мессенджер вместо звонков (Telegram, WhatsApp)</label>
             </div>
             <button class="button button--dark" type="submit">Забронировать</button>

@@ -1,7 +1,9 @@
-﻿using FluentValidation;
+﻿using System.Text.RegularExpressions;
+
+using FluentValidation;
 using FluentValidation.Results;
+
 using Microsoft.AspNetCore.Mvc;
-using System.Text.RegularExpressions;
 
 namespace Uni.Controllers.Api;
 
@@ -24,20 +26,23 @@ public partial class Book : Controller
 
         public partial class Validator : AbstractValidator<Booking>
         {
-            [GeneratedRegex(@"^\+?\(?[0-9]{3}\)?[\-\s\.]?[0-9]{3}[\-\s\.]?[0-9]{4,6}$")]
+            [GeneratedRegex(@"^\+?\(?[0-9]{3}\)?[\-\s.]?[0-9]{3}[\-\s.]?[0-9]{4,6}$")]
             private static partial Regex PhoneNumberRegex();
 
             public Validator()
             {
                 RuleFor(x => x.Name).NotEmpty().MaximumLength(100);
                 RuleFor(x => x.Phone).NotEmpty().Matches(PhoneNumberRegex());
-                RuleFor(x => x.Date).NotEmpty().Must(x =>
-                {
-                    DateTimeOffset dto = x;
-                    dto = dto.ToOffset(TimeSpan.FromHours(3));
-                    return dto.Date >= DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(3)).Date &&
-                           dto.TimeOfDay >= new TimeSpan(10, 0, 0) && dto.TimeOfDay < new TimeSpan(19, 30, 0);
-                });
+                RuleFor(x => x.Date)
+                    .NotEmpty()
+                    .Must(x =>
+                    {
+                        DateTimeOffset dto = x;
+                        dto = dto.ToOffset(TimeSpan.FromHours(3));
+                        return dto.Date >= DateTimeOffset.UtcNow.ToOffset(TimeSpan.FromHours(3)).Date &&
+                            dto.TimeOfDay >= new TimeSpan(10, 0, 0) &&
+                            dto.TimeOfDay < new TimeSpan(19, 30, 0);
+                    });
                 RuleFor(x => x.Message).Must(x => x is "on" or "off" or null);
             }
         }
@@ -50,9 +55,7 @@ public partial class Book : Controller
         ValidationResult validationResult = _validator.Validate(booking);
 
         if (!validationResult.IsValid)
-        {
             return UnprocessableEntity(validationResult.Errors);
-        }
 
         return Ok();
     }

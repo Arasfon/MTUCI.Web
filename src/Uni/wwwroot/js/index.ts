@@ -1,5 +1,5 @@
 import flatpickr from "flatpickr";
-import { Russian as flatpickrRu } from "flatpickr/dist/l10n/ru.js";
+import {Russian as flatpickrRu} from "flatpickr/dist/l10n/ru.js";
 
 import MobileNavigation from "./navigation";
 

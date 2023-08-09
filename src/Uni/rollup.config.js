@@ -2,7 +2,7 @@ import rollupTs from "@rollup/plugin-typescript";
 import rollupNodeResolve from "@rollup/plugin-node-resolve";
 import rollupCommonJs from "@rollup/plugin-commonjs";
 import rollupTerser from "@rollup/plugin-terser";
-import { globSync } from "glob";
+import {globSync} from "glob";
 import path from "path";
 
 function getFiles() {

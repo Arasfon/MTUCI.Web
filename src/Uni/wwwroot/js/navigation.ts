@@ -2,14 +2,9 @@ import anime from "animejs";
 
 export default class MobileNavigation {
     private menuState = 0;
-    private outerClickLambda = (e) => this.switchMenuOnOuterClick(e);
 
     constructor() {
         document.querySelector(".nav-menu__menu-button")!.addEventListener("click", this.switchMenu.bind(this));
-    }
-
-    private switchMenuOnOuterClick(e: Event) {
-        this.switchMenu();
     }
 
     switchMenu() {
@@ -68,5 +63,11 @@ export default class MobileNavigation {
                 delay: anime.stagger(50)
             });
         }
+    }
+
+    private outerClickLambda = (e) => this.switchMenuOnOuterClick(e);
+
+    private switchMenuOnOuterClick(e: Event) {
+        this.switchMenu();
     }
 }
