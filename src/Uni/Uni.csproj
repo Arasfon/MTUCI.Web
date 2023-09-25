@@ -7,13 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="wwwroot\js\chunks\"/>
+        <Folder Include="wwwroot\js\chunks\" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="11.5.2"/>
-        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2"/>
-        <PackageReference Include="WebMarkupMin.AspNetCore7" Version="2.13.9"/>
+        <PackageReference Include="FluentValidation" Version="11.7.1" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />
+        <PackageReference Include="WebMarkupMin.AspNetCore7" Version="2.14.1" />
     </ItemGroup>
 
 </Project>
