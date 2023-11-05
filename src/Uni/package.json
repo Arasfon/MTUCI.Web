@@ -5,13 +5,13 @@
   "private": true,
   "type": "module",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^24.1.0",
-    "@rollup/plugin-node-resolve": "^15.0.2",
-    "@rollup/plugin-terser": "^0.4.1",
-    "@rollup/plugin-typescript": "^11.1.0",
-    "@rollup/stream": "^3.0.0",
-    "@types/animejs": "^3.1.7",
-    "glob": "^10.0.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@rollup/stream": "^3.0.1",
+    "@types/animejs": "^3.1.10",
+    "glob": "^10.3.10",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.3.0",
@@ -19,9 +19,9 @@
     "gulp-ext-replace": "^0.3.0",
     "gulp-less": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
-    "rollup": "^3.21.2",
-    "tslib": "^2.5.0",
-    "typescript": "^5.0.4"
+    "rollup": "^4.3.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
     "@glidejs/glide": "^3.6.0",
@@ -29,6 +29,7 @@
     "flatpickr": "^4.6.13"
   },
   "overrides": {
-    "glob-parent": "^5.1.2"
+    "glob-parent": "^5.1.2",
+    "postcss": "^8.4.31"
   }
 }
