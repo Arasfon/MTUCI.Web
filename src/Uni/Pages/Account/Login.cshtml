@@ -1,0 +1,30 @@
+@page
+
+@model LoginModel
+
+@{
+    ViewBag.TitlePrefix = "Вход";
+    ViewBag.Description = "Вход";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/account/login.css" asp-append-version="true"/>
+}
+
+<h1>С возвращением!</h1>
+<form id="loginForm" method="post">
+    <label for="username">Введите логин:</label>
+    <input id="username" class="light" name="username" type="text" required maxlength="30" placeholder="Логин"/>
+    <label for="password">Введите пароль:</label>
+    <input id="password" class="light" type="password" name="password" required placeholder="Пароль" />
+    <div>
+        <input id="remember" class="light" type="checkbox" name="remember" value="true" checked />
+        <label for="remember">Запомнить</label>
+    </div>
+    @if (Model.WrongCredentials)
+    {
+        <p class="wrong-credentials">Неверный логин и/или пароль!</p>
+    }
+    <button class="login-button button button--dark" type="submit">Войти</button>
+</form>

@@ -3,7 +3,8 @@ using FluentValidation;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.StaticFiles;
 
-using Uni.Controllers.Api;
+using Uni.Database;
+using Uni.Models.Forms;
 using Uni.Transformers;
 
 using WebMarkupMin.AspNetCore7;
@@ -22,6 +23,17 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(policy => policy.AllowAnyOrigin()));
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
+builder.Services.AddAuthentication()
+    .AddCookie(options =>
+    {
+        options.SlidingExpiration = true;
+        options.ExpireTimeSpan = TimeSpan.FromDays(7);
+
+        options.LoginPath = "/Account/Login";
+    });
+
+builder.Services.AddDbContext<UniContext>();
 
 builder.Services.AddRazorPages(options =>
     options.Conventions.Add(new PageRouteTransformerConvention(new SlugifyParameterTransformer())));
@@ -46,6 +58,8 @@ app.UseHttpsRedirection();
 
 app.UseStatusCodePagesWithReExecute("/error/{0}");
 
+#region Static files
+
 FileExtensionContentTypeProvider mimeProvider = new();
 
 if (app.Environment.IsDevelopment())
@@ -59,11 +73,15 @@ app.UseStaticFiles(new StaticFileOptions
     ContentTypeProvider = mimeProvider
 });
 
+#endregion
+
 app.UseWebMarkupMin();
 
 app.UseRouting();
 
 app.UseCors();
+
+#region Security headers
 
 if (!app.Environment.IsDevelopment())
 {
@@ -77,6 +95,12 @@ if (!app.Environment.IsDevelopment())
         await next();
     });
 }
+
+#endregion
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.MapRazorPages();
 

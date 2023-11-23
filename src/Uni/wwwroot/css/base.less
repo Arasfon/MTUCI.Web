@@ -32,7 +32,8 @@ a {
     font-family: 'Gilroy', sans-serif;
     box-sizing: border-box;
     padding: 0.8rem 1.6rem;
-    display: inline-block;
+    display: block;
+    width: fit-content;
     border: 1px solid #ccc;
     border-radius: 1rem;
     cursor: pointer;
@@ -69,7 +70,7 @@ a {
 input {
     font-family: 'Gilroy', sans-serif;
 
-    &[type='text'], &[type='tel'] {
+    &[type='text'], &[type='tel'], &[type='password'] {
         padding: 0.8rem 1.6rem;
         display: inline-block;
         border: 0.1rem solid #ccc;
@@ -79,6 +80,29 @@ input {
 
         &:focus {
             outline: 0.2rem solid @background;
+
+            &.light {
+                outline: 0.2rem solid @highlight;
+            }
+        }
+    }
+}
+
+textarea {
+    font-family: 'Gilroy', sans-serif;
+
+    padding: 0.8rem 1.6rem;
+    display: inline-block;
+    border: 0.1rem solid #ccc;
+    border-radius: 1rem;
+    outline-offset: -0.1rem;
+    transition: outline linear 0.1s;
+
+    &:focus {
+        outline: 0.2rem solid @background;
+
+        &.light {
+            outline: 0.2rem solid @highlight;
         }
     }
 }

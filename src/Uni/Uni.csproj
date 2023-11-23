@@ -5,16 +5,22 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
       <UserSecretsId>674765c4-21df-4e10-b7bd-580c0ddd3493</UserSecretsId>
-    </PropertyGroup>
+  </PropertyGroup>
 
     <ItemGroup>
         <Folder Include="wwwroot\js\chunks\" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="11.7.1" />
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
         <PackageReference Include="FluentValidation" Version="11.8.1" />
-        <PackageReference Include="WebMarkupMin.AspNetCore7" Version="2.14.1" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
         <PackageReference Include="WebMarkupMin.AspNetCore7" Version="2.15.2" />
     </ItemGroup>
 

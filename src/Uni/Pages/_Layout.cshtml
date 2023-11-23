@@ -58,6 +58,14 @@
         <a asp-page="/Menu" title="Меню">Меню</a>
         <a asp-page="/Events" title="Мероприятия">Мероприятия</a>
         <a asp-page="/About/Index" asp-fragment="contact" title="Контакты">Контакты</a>
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <a asp-page="/Account/Profile" title="Профиль">Профиль</a>
+        }
+        else
+        {
+            <a asp-page="/Account/Login" title="Войти">Войти</a>
+        }
     </nav>
     <hr/>
 </header>

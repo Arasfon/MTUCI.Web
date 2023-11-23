@@ -1,0 +1,42 @@
+@page "{userId?}"
+@model ProfileModel
+
+@{
+    ViewBag.TitlePrefix = $"Профиль — {Model.ShownUser.Login}";
+    ViewBag.Description = "Профиль пользователя";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/account/profile.css" asp-append-version="true" />
+}
+
+<h1>@Model.ShownUser.Login</h1>
+<p>Обо мне:</p>
+@if (!Model.IsEditing || !Model.IsCurrentUser)
+{
+    @if (Model.ShownUser.UserProfile?.Bio is null)
+    {
+        <p class="bio"><em>Пусто</em></p>
+    }
+    else
+    {
+        <p class="bio">@Model.ShownUser.UserProfile?.Bio</p>
+    }
+
+    @if (Model.IsCurrentUser)
+    {
+        <a class="button button--light" href="?edit=true">Редактировать</a>
+    }
+}
+else
+{
+    <form id="bioEditForm" method="post">
+        <textarea class="bio-editor light" name="bio" maxlength="1024">@Model.ShownUser.UserProfile?.Bio</textarea>
+        <button class="button button--light" type="submit">Сохранить</button>
+    </form>
+}
+@if (Model.IsCurrentUser)
+{
+    <a class="logout-button button" asp-page="/Account/Logout">Выйти</a>
+}
