@@ -3,6 +3,8 @@ using FluentValidation.Results;
 
 using Microsoft.AspNetCore.Mvc;
 
+using System.Security.Claims;
+
 using Uni.Database;
 using Uni.Models.Database;
 using Uni.Models.Forms;
@@ -26,6 +28,11 @@ public class Bookings(
             return UnprocessableEntity(validationResult.Errors);
 
         Booking booking = (Booking)bookingFormModel;
+
+        string? currentUserIdString = HttpContext.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (currentUserIdString is not null)
+            booking.UserId = Int64.Parse(currentUserIdString);
 
         if (dbContext.Bookings.Count(x => x.Date == booking.Date) >= 7)
             return NotFound(new { message = "No available for booking tables found." });
