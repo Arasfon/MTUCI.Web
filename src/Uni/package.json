@@ -10,7 +10,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.5",
     "@rollup/stream": "^3.0.1",
-    "@types/animejs": "^3.1.10",
+    "@types/animejs": "^3.1.12",
     "glob": "^10.3.10",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
@@ -19,9 +19,9 @@
     "gulp-ext-replace": "^0.3.0",
     "gulp-less": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
-    "rollup": "^4.3.0",
+    "rollup": "^4.5.1",
     "tslib": "^2.6.2",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   },
   "dependencies": {
     "@glidejs/glide": "^3.6.0",
