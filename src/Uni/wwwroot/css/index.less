@@ -155,3 +155,16 @@ h3 {
         }
     }
 }
+
+#bookFormError {
+    color: shade(@danger, 50%);
+    font-weight: bold;
+    visibility: collapse;
+    opacity: 0;
+    transition: opacity 150ms ease, visibility 150ms ease;
+
+    &.shown {
+        visibility: visible;
+        opacity: 1;
+    }
+}

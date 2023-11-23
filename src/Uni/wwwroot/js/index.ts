@@ -33,7 +33,14 @@ document.getElementById("bookForm")!.addEventListener("submit", async event => {
 
     if (response.ok)
         window.location.href = "/visit/booking-thanks";
+    else if (response.status === 404) {
+        const errorElement = document.getElementById("bookFormError") as HTMLElement;
+        errorElement.classList.add("shown");
+        errorElement.innerText = "На данное время все столики уже забронированы. Пожалуйста, выберите другое время.";
+    }
     else {
-        (document.getElementById("datetime") as HTMLInputElement).setCustomValidity("Проверьте правильность введённых данных.");
+        const errorElement = document.getElementById("bookFormError") as HTMLElement;
+        errorElement.classList.add("shown");
+        errorElement.innerText = "Что-то не так. Пожалуйста, проверьте правильность введённых данных.";
     }
 });

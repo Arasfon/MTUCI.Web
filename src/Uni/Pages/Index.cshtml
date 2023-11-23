@@ -1,4 +1,4 @@
-﻿@page
+@page
 
 @{
     ViewBag.Description = "Meowy: Котокафе вашей мечты. Открыто с 10:00 до 20:00 в центре Москвы. Забронируйте место сейчас!";
@@ -138,7 +138,7 @@
     <section id="book" class="book-section centered-section contain">
         <h2>Готовы? Забронируйте свой столик здесь</h2>
         <p>Мы позвоним или напишем Вам для подтверждения бронирования.</p>
-        <form id="bookForm" class="book-section__form" asp-controller="Book" asp-action="Post" method="post">
+        <form id="bookForm" class="book-section__form" asp-controller="Bookings" asp-action="Post" method="post">
             <label for="bookName">Введите Ваше имя:</label>
             <input id="bookName" name="name" type="text" required maxlength="100" placeholder="Имя"/>
             <label for="bookTel">свой номер телефона:</label>
@@ -146,9 +146,10 @@
             <label for="datetime">и день и время бронирования:</label>
             <input id="datetime" type="text" name="date" required placeholder="Дата и время"/>
             <div>
-                <input type="checkbox" id="callOrMessageOnBook" name="message"/>
+                <input type="checkbox" id="callOrMessageOnBook" name="isCallUndesirable" value="true" />
                 <label for="callOrMessageOnBook">Писать в мессенджер вместо звонков (Telegram, WhatsApp)</label>
             </div>
+            <p id="bookFormError"></p>
             <button class="button button--dark" type="submit">Забронировать</button>
         </form>
     </section>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.StaticFiles;
 using Uni.Database;
 using Uni.Models.Forms;
 using Uni.Transformers;
+using Uni.Validators;
 
 using WebMarkupMin.AspNetCore7;
 
@@ -41,7 +42,8 @@ builder.Services.AddRazorPages(options =>
 builder.Services.AddWebMarkupMin(options => options.DisablePoweredByHttpHeaders = true)
     .AddHtmlMinification();
 
-builder.Services.AddScoped<IValidator<Book.Booking>, Book.Booking.Validator>();
+// BookingFormModel validation
+builder.Services.AddScoped<IValidator<BookingFormModel>, BookingFormModelValidator>();
 
 WebApplication app = builder.Build();
 
