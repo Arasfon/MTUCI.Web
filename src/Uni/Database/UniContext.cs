@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Uni.Models.Database;
@@ -41,7 +41,9 @@ public partial class UniContext : DbContext
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("id");
             entity.Property(e => e.Date).HasColumnName("date");
-            entity.Property(e => e.IsCallUndesirable).HasColumnName("is_call_undesirable");
+            entity.Property(e => e.IsCallUndesirable)
+                .HasDefaultValue(false)
+                .HasColumnName("is_call_undesirable");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .HasColumnName("name");
@@ -126,7 +128,7 @@ public partial class UniContext : DbContext
 
             entity.ToTable("users");
 
-            entity.HasIndex(e => e.Login, "users_login_idx");
+            entity.HasIndex(e => e.Login, "users_login_idx").HasAnnotation("Npgsql:StorageParameter:deduplicate_items", "true");
 
             entity.Property(e => e.Id)
                 .UseIdentityAlwaysColumn()
@@ -137,6 +139,10 @@ public partial class UniContext : DbContext
             entity.Property(e => e.PasswordHash)
                 .HasMaxLength(72)
                 .HasColumnName("password_hash");
+            entity.Property(e => e.Role)
+                .HasMaxLength(10)
+                .HasDefaultValueSql("'user'::character varying")
+                .HasColumnName("role");
         });
 
         modelBuilder.Entity<UserProfile>(entity =>

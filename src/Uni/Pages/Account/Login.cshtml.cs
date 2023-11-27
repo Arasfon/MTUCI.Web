@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 using System.Security.Claims;
 
-using Uni.Authentication;
+using Uni.Authorization;
 using Uni.Database;
 using Uni.Models.Database;
 
@@ -38,7 +38,7 @@ public class LoginModel(
         [
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Name, user.Login),
-            new Claim(ClaimTypes.Role, RoleNames.Admin)
+            new Claim(ClaimTypes.Role, user.Role)
         ];
 
         ClaimsIdentity identity = new(claims, CookieAuthenticationDefaults.AuthenticationScheme);
