@@ -95,7 +95,7 @@ if (!app.Environment.IsDevelopment())
     app.Use(async (context, next) =>
     {
         context.Response.Headers.TryAdd("Content-Security-Policy",
-            "default-src 'self'; frame-ancestors 'self'; frame-src 'self' https://yandex.ru/");
+            "default-src 'self'; frame-ancestors 'self'; frame-src 'self' https://yandex.ru/; style-src 'self' 'unsafe-inline' https://uicdn.toast.com/; img-src 'self' data:");
         context.Response.Headers.TryAdd("X-Frame-Options", "SAMEORIGIN");
         context.Response.Headers.TryAdd("X-Content-Type-Options", "nosniff");
         context.Response.Headers.TryAdd("Referrer-Policy", "no-referrer-when-downgrade");
