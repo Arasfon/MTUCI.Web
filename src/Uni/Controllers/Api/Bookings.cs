@@ -48,6 +48,6 @@ public class Bookings(
             return BadRequest();
         }
 
-        return Ok();
+        return Created();
     }
 }

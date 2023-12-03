@@ -28,10 +28,11 @@ document.getElementById("bookForm")!.addEventListener("submit", async event => {
     const response = await fetch(form.action,
         {
             method: "post",
-            body: new FormData(form)
+            body: new FormData(form),
+            credentials: 'include'
         });
 
-    if (response.ok)
+    if (response.status === 201)
         window.location.href = "/visit/booking-thanks";
     else if (response.status === 404) {
         const errorElement = document.getElementById("bookFormError") as HTMLElement;
