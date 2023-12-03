@@ -18,7 +18,7 @@ public class LoginModel(
 {
     public bool WrongCredentials { get; set; }
 
-    public async Task<IActionResult> OnPost(string username, string password, bool remember = false, [FromQuery] string? returnUrl = null)
+    public async Task<IActionResult> OnPost(string username, string password, bool remember = false, [FromQuery] Uri? returnUrl = null)
     {
         User? user = await uniContext.Users.FirstOrDefaultAsync(x => x.Login == username);
 
@@ -49,6 +49,9 @@ public class LoginModel(
             IsPersistent = remember
         });
 
-        return RedirectToPage(returnUrl ?? "/Index");
+        if (returnUrl?.IsAbsoluteUri == false)
+            return Redirect(returnUrl.ToString());
+
+        return RedirectToPage("/Index");
     }
 }
