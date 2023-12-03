@@ -18,8 +18,6 @@ public partial class UniContext : DbContext
 
     public virtual DbSet<Booking> Bookings { get; set; }
 
-    public virtual DbSet<Event> Events { get; set; }
-
     public virtual DbSet<News> News { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -58,51 +56,13 @@ public partial class UniContext : DbContext
                 .HasConstraintName("bookings_user_id_fkey");
         });
 
-        modelBuilder.Entity<Event>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("events_pkey");
-
-            entity.ToTable("events");
-
-            entity.Property(e => e.Id)
-                .UseIdentityAlwaysColumn()
-                .HasColumnName("id");
-            entity.Property(e => e.AuthorId).HasColumnName("author_id");
-            entity.Property(e => e.Description).HasColumnName("description");
-            entity.Property(e => e.Title)
-                .HasMaxLength(100)
-                .HasColumnName("title");
-
-            entity.HasOne(d => d.Author).WithMany(p => p.Events)
-                .HasForeignKey(d => d.AuthorId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("events_author_fkey");
-
-            entity.HasMany(d => d.Participants).WithMany(p => p.EventsParticipations)
-                .UsingEntity<Dictionary<string, object>>(
-                    "EventsParticipant",
-                    r => r.HasOne<User>().WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("events_participants_user_id_fkey"),
-                    l => l.HasOne<Event>().WithMany()
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("events_participants_event_id_fkey"),
-                    j =>
-                    {
-                        j.HasKey("EventId", "UserId").HasName("events_participants_pkey");
-                        j.ToTable("events_participants");
-                        j.IndexerProperty<long>("EventId").HasColumnName("event_id");
-                        j.IndexerProperty<long>("UserId").HasColumnName("user_id");
-                    });
-        });
-
         modelBuilder.Entity<News>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("news_pkey");
 
             entity.ToTable("news");
+
+            entity.HasIndex(e => e.Date, "news_date_index");
 
             entity.Property(e => e.Id)
                 .UseIdentityAlwaysColumn()
@@ -110,7 +70,7 @@ public partial class UniContext : DbContext
             entity.Property(e => e.AuthorId).HasColumnName("author_id");
             entity.Property(e => e.Content).HasColumnName("content");
             entity.Property(e => e.Date)
-                .HasColumnType("time with time zone")
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnName("date");
             entity.Property(e => e.Title)
                 .HasMaxLength(500)

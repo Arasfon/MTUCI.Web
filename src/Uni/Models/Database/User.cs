@@ -15,11 +15,7 @@ public partial class User
 
     public virtual ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
-    public virtual ICollection<Event> Events { get; set; } = new List<Event>();
-
     public virtual ICollection<News> News { get; set; } = new List<News>();
 
     public virtual UserProfile? UserProfile { get; set; }
-
-    public virtual ICollection<Event> EventsParticipations { get; set; } = new List<Event>();
 }

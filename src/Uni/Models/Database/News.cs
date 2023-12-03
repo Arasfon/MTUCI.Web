@@ -9,11 +9,11 @@ public partial class News
 
     public string Title { get; set; } = null!;
 
-    public byte[] Content { get; set; } = null!;
-
-    public DateTimeOffset Date { get; set; }
-
     public long AuthorId { get; set; }
+
+    public string Content { get; set; } = null!;
+
+    public DateTime Date { get; set; }
 
     public virtual User Author { get; set; } = null!;
 }
