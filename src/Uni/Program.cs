@@ -31,7 +31,9 @@ builder.Services.AddAuthentication()
         options.SlidingExpiration = true;
         options.ExpireTimeSpan = TimeSpan.FromDays(7);
 
-        options.LoginPath = "/Account/Login";
+        options.LoginPath = "/account/login";
+        options.LogoutPath = "/account/logout";
+        options.AccessDeniedPath = "/error/403";
     });
 
 builder.Services.AddDbContext<UniContext>();
