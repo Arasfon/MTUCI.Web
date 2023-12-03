@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.StaticFiles;
 
 using Uni.Database;
+using Uni.Formatters;
 using Uni.Models.Forms;
 using Uni.Transformers;
 using Uni.Validators;
@@ -40,6 +41,8 @@ builder.Services.AddDbContext<UniContext>();
 
 builder.Services.AddRazorPages(options =>
     options.Conventions.Add(new PageRouteTransformerConvention(new SlugifyParameterTransformer())));
+
+builder.Services.AddMvc(options => options.InputFormatters.Insert(0, new RawBodyInputFormatter()));
 
 builder.Services.AddWebMarkupMin(options => options.DisablePoweredByHttpHeaders = true)
     .AddHtmlMinification();
