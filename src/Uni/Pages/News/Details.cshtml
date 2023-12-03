@@ -1,0 +1,32 @@
+@page "/news/{id}"
+
+@using Uni.Authorization
+
+@model IndexModel
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/news/details.css" asp-append-version="true"/>
+}
+
+@section Scripts
+{
+    <script defer type="module" src="~/js/news/details.js" asp-append-version="true"></script>
+}
+
+@if (Model.IsEditing)
+{
+    <h1>Редактирование новости</h1>
+    @*<input type="text"/>*@
+    <div id="news-editor"></div>
+    <button id="save-button" class="button button--light" type="button">Сохранить</button>
+}
+else
+{
+    <h1>Новость</h1>
+    <div id="news-viewer"></div>
+    @if (User.IsInRole(RoleNames.Admin))
+    {
+        <a class="button button--light" href="?edit=true">Редактировать</a>
+    }
+}

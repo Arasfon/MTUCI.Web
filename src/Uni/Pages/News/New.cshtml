@@ -1,0 +1,17 @@
+@page
+
+@model NewModel
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/news/details.css" asp-append-version="true"/>
+}
+
+@section Scripts
+{
+    <script defer type="module" src="~/js/news/new.js" asp-append-version="true"></script>
+}
+
+<h1>Новая новость</h1>
+<div id="news-editor"></div>
+<button id="save-button" class="button button--light" type="button">Сохранить</button>
