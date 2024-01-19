@@ -2,6 +2,8 @@
 
 **Meowy** is a website for the fictional cat café Meowy. It is also a course work for two university disciplines (Web programming and Databases).
 
+Website is available on [meowy.arasfon.ru](https://meowy.arasfon.ru)
+
 ![img](images/front-page.png)
 
 ## Project overview
