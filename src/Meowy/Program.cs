@@ -9,7 +9,7 @@ using Meowy.Models.Forms;
 using Meowy.Transformers;
 using Meowy.Validators;
 
-using WebMarkupMin.AspNetCore7;
+using WebMarkupMin.AspNetCore8;
 
 // Configure services
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);

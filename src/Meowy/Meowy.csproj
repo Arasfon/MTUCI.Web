@@ -21,7 +21,7 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
-        <PackageReference Include="WebMarkupMin.AspNetCore7" Version="2.15.2" />
+        <PackageReference Include="WebMarkupMin.AspNetCore8" Version="2.15.3" />
     </ItemGroup>
 
 </Project>
