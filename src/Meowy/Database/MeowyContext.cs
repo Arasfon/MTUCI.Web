@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Meowy.Models.Database;
+
 using Microsoft.EntityFrameworkCore;
-using Meowy.Models.Database;
 
 namespace Meowy.Database;
 
 public partial class MeowyContext : DbContext
 {
-    public MeowyContext()
-    {
-    }
+    public MeowyContext() { }
 
     public MeowyContext(DbContextOptions<MeowyContext> options)
-        : base(options)
-    {
-    }
+        : base(options) { }
 
     public virtual DbSet<Booking> Bookings { get; set; }
 
@@ -24,8 +19,8 @@ public partial class MeowyContext : DbContext
 
     public virtual DbSet<UserProfile> UserProfiles { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Name=ConnectionStrings:Main");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
+        optionsBuilder.UseNpgsql("Name=ConnectionStrings:Main");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -50,7 +45,8 @@ public partial class MeowyContext : DbContext
                 .HasColumnName("phone_number");
             entity.Property(e => e.UserId).HasColumnName("user_id");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Bookings)
+            entity.HasOne(d => d.User)
+                .WithMany(p => p.Bookings)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("bookings_user_id_fkey");
@@ -76,7 +72,8 @@ public partial class MeowyContext : DbContext
                 .HasMaxLength(500)
                 .HasColumnName("title");
 
-            entity.HasOne(d => d.Author).WithMany(p => p.News)
+            entity.HasOne(d => d.Author)
+                .WithMany(p => p.News)
                 .HasForeignKey(d => d.AuthorId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("news_author_id_fkey");
@@ -118,7 +115,8 @@ public partial class MeowyContext : DbContext
                 .HasMaxLength(1024)
                 .HasColumnName("bio");
 
-            entity.HasOne(d => d.User).WithOne(p => p.UserProfile)
+            entity.HasOne(d => d.User)
+                .WithOne(p => p.UserProfile)
                 .HasForeignKey<UserProfile>(d => d.UserId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("user_profiles_user_id_fkey");

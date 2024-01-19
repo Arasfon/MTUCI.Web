@@ -24,12 +24,9 @@ document.getElementById("save-button")!.addEventListener("click", async e => {
         }
     });
 
-    if (response.status === 201)
-    {
+    if (response.status === 201) {
         window.location.href = response.headers.get("location")!;
-    }
-    else
-    {
+    } else {
         alert(response.status);
     }
 });

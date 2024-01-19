@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Meowy.Models.Database;
+﻿namespace Meowy.Models.Database;
 
 public partial class Booking
 {

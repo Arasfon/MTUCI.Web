@@ -1,3 +1,6 @@
+using Meowy.Database;
+using Meowy.Models.Database;
+
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -6,15 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 using System.Security.Claims;
 
-using Meowy.Authorization;
-using Meowy.Database;
-using Meowy.Models.Database;
-
 namespace Meowy.Pages.Account;
 
-public class LoginModel(
-    MeowyContext meowyContext
-    ) : PageModel
+public class LoginModel(MeowyContext meowyContext) : PageModel
 {
     public bool WrongCredentials { get; set; }
 
@@ -44,10 +41,7 @@ public class LoginModel(
         ClaimsIdentity identity = new(claims, CookieAuthenticationDefaults.AuthenticationScheme);
         ClaimsPrincipal claimsPrincipal = new(identity);
 
-        await HttpContext.SignInAsync(claimsPrincipal, new AuthenticationProperties
-        {
-            IsPersistent = remember
-        });
+        await HttpContext.SignInAsync(claimsPrincipal, new AuthenticationProperties { IsPersistent = remember });
 
         if (returnUrl?.IsAbsoluteUri == false)
             return Redirect(returnUrl.ToString());

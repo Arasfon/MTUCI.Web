@@ -1,13 +1,13 @@
 using FluentValidation;
 
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using Microsoft.AspNetCore.StaticFiles;
-
 using Meowy.Database;
 using Meowy.Formatters;
 using Meowy.Models.Forms;
 using Meowy.Transformers;
 using Meowy.Validators;
+
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using Microsoft.AspNetCore.StaticFiles;
 
 using WebMarkupMin.AspNetCore8;
 
@@ -75,10 +75,7 @@ if (app.Environment.IsDevelopment())
     mimeProvider.Mappings[".ts"] = "text/prs.typescript";
 }
 
-app.UseStaticFiles(new StaticFileOptions
-{
-    ContentTypeProvider = mimeProvider
-});
+app.UseStaticFiles(new StaticFileOptions { ContentTypeProvider = mimeProvider });
 
 #endregion
 

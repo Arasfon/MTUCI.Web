@@ -1,10 +1,8 @@
-interface ArticleResponse
-{
+interface ArticleResponse {
     news: News;
 }
 
-interface News
-{
+interface News {
     id: number,
     title: string,
     date: string,

@@ -8,7 +8,7 @@
 
 @section Styles
 {
-    <link rel="stylesheet" href="~/css/account/profile.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/account/profile.css" asp-append-version="true"/>
 }
 
 <h1>@Model.ShownUser.Login</h1>
@@ -17,7 +17,9 @@
 {
     @if (Model.ShownUser.UserProfile?.Bio is null)
     {
-        <p class="bio"><em>Пусто</em></p>
+        <p class="bio">
+            <em>Пусто</em>
+        </p>
     }
     else
     {

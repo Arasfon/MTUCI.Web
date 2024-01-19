@@ -1,8 +1,8 @@
 using FluentValidation;
 
-using System.Text.RegularExpressions;
-
 using Meowy.Models.Forms;
+
+using System.Text.RegularExpressions;
 
 namespace Meowy.Validators;
 

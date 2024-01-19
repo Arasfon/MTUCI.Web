@@ -1,19 +1,17 @@
+using Meowy.Authorization;
+using Meowy.Database;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using System.Security.Claims;
 
-using Meowy.Authorization;
-using Meowy.Database;
-
 namespace Meowy.Controllers.Api;
 
 [Route("/api/[controller]")]
 [ApiController]
-public class News(
-    MeowyContext dbContext
-    ) : Controller
+public class News(MeowyContext dbContext) : Controller
 {
     [HttpGet]
     public async Task<IActionResult> GetArticle(long id)

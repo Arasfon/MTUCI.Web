@@ -4,24 +4,24 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-      <UserSecretsId>674765c4-21df-4e10-b7bd-580c0ddd3493</UserSecretsId>
-  </PropertyGroup>
+        <UserSecretsId>674765c4-21df-4e10-b7bd-580c0ddd3493</UserSecretsId>
+    </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="wwwroot\js\chunks\" />
+        <Folder Include="wwwroot\js\chunks\"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-        <PackageReference Include="FluentValidation" Version="11.8.1" />
-        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3"/>
+        <PackageReference Include="FluentValidation" Version="11.8.1"/>
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.1"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
-        <PackageReference Include="WebMarkupMin.AspNetCore8" Version="2.15.3" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0"/>
+        <PackageReference Include="WebMarkupMin.AspNetCore8" Version="2.15.3"/>
     </ItemGroup>
 
 </Project>

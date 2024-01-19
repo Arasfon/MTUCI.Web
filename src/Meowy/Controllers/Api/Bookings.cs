@@ -1,13 +1,13 @@
 using FluentValidation;
 using FluentValidation.Results;
 
-using Microsoft.AspNetCore.Mvc;
-
-using System.Security.Claims;
-
 using Meowy.Database;
 using Meowy.Models.Database;
 using Meowy.Models.Forms;
+
+using Microsoft.AspNetCore.Mvc;
+
+using System.Security.Claims;
 
 namespace Meowy.Controllers.Api;
 
@@ -16,7 +16,7 @@ namespace Meowy.Controllers.Api;
 public class Bookings(
     IValidator<BookingFormModel> validator,
     MeowyContext dbContext
-    ) : Controller
+) : Controller
 {
     [HttpPost]
     [ValidateAntiForgeryToken]

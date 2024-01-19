@@ -6,18 +6,15 @@ import Viewer from "@toast-ui/editor/dist/toastui-editor-viewer";
 //import pluginColor from "@toast-ui/editor-plugin-color-syntax";
 import pluginMergeCells from "@toast-ui/editor-plugin-table-merged-cell";
 import pluginChart from "@toast-ui/editor-plugin-chart";
+
 //import pluginCodeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 
-async function getArticle(articleIdString: string)
-{
+async function getArticle(articleIdString: string) {
     const articleResponse = await fetch(`/api/news?id=${articleIdString}`);
 
-    if (articleResponse.status === 200)
-    {
+    if (articleResponse.status === 200) {
         return (await articleResponse.json() as ArticleResponse).news;
-    }
-    else
-    {
+    } else {
         return null;
     }
 }
@@ -30,16 +27,12 @@ const isEditing = urlParams.get("edit") === "true";
 
 const article = await getArticle(articleId);
 
-if (article?.content === null)
-{
+if (article?.content === null) {
     window.location.replace("/error/404");
-}
-else
-{
+} else {
     //document.getElementById("news-title")!.innerText = article!.title;
 
-    if (isEditing)
-    {
+    if (isEditing) {
         const editor = new Editor({
             el: document.querySelector("#news-editor"),
             initialValue: article?.content,
@@ -59,18 +52,13 @@ else
                 }
             });
 
-            if (response.status === 200)
-            {
+            if (response.status === 200) {
                 window.location.href = window.location.pathname;
-            }
-            else
-            {
+            } else {
                 alert(response.status);
             }
         });
-    }
-    else
-    {
+    } else {
         const viewer = new Viewer({
             el: document.querySelector("#news-viewer"),
             initialValue: article?.content,

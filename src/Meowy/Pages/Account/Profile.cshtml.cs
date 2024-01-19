@@ -1,12 +1,12 @@
+using Meowy.Database;
+using Meowy.Models.Database;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 using System.Security.Claims;
-
-using Meowy.Database;
-using Meowy.Models.Database;
 
 namespace Meowy.Pages.Account;
 
@@ -16,7 +16,7 @@ public class ProfileModel(MeowyContext meowyContext) : PageModel
     public User ShownUser { get; set; } = null!;
     public bool IsCurrentUser { get; set; }
 
-    [BindProperty(Name="edit", SupportsGet = true)]
+    [BindProperty(Name = "edit", SupportsGet = true)]
     public bool IsEditing { get; set; } = false;
 
     public async Task<IActionResult> OnGet([FromRoute] long? userId)

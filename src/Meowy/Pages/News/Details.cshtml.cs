@@ -1,7 +1,7 @@
+using Meowy.Authorization;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
-using Meowy.Authorization;
 
 namespace Meowy.Pages.News;
 

@@ -38,8 +38,7 @@ document.getElementById("bookForm")!.addEventListener("submit", async event => {
         const errorElement = document.getElementById("bookFormError") as HTMLElement;
         errorElement.classList.add("shown");
         errorElement.innerText = "На данное время все столики уже забронированы. Пожалуйста, выберите другое время.";
-    }
-    else {
+    } else {
         const errorElement = document.getElementById("bookFormError") as HTMLElement;
         errorElement.classList.add("shown");
         errorElement.innerText = "Что-то не так. Пожалуйста, проверьте правильность введённых данных.";
