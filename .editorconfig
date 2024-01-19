@@ -85,12 +85,14 @@ resharper_keep_existing_embedded_arrangement = false
 resharper_keep_existing_expr_member_arrangement = false
 resharper_keep_existing_initializer_arrangement = false
 resharper_keep_existing_invocation_parens_arrangement = false
+resharper_keep_existing_primary_constructor_declaration_parens_arrangement = false
 resharper_keep_existing_switch_expression_arrangement = false
 resharper_local_function_body = expression_body
 resharper_max_array_initializer_elements_on_line = 5
 resharper_max_formal_parameters_on_line = 5
-resharper_max_initializer_elements_on_line = 3
+resharper_max_initializer_elements_on_line = 1
 resharper_max_invocation_arguments_on_line = 5
+resharper_max_primary_constructor_parameters_on_line = 1
 resharper_outdent_statement_labels = true
 resharper_parentheses_non_obvious_operations = none, range
 resharper_place_accessorholder_attribute_on_same_line = false
@@ -108,6 +110,7 @@ resharper_show_autodetect_configure_formatting_tip = false
 resharper_space_before_self_closing = false
 resharper_use_indent_from_vs = false
 resharper_wrap_array_initializer_style = chop_if_long
+resharper_wrap_before_primary_constructor_declaration_rpar = true
 resharper_wrap_chained_method_calls = chop_if_long
 resharper_wrap_text = false
 resharper_xmldoc_attribute_indent = align_by_first_attribute
@@ -174,11 +177,11 @@ resharper_web_config_wrong_module_highlighting = warning
 # Standard properties
 max_line_length = 140
 
-[{*.har,*.jsb2,*.jsb3,*.json,.babelrc,.eslintrc,.prettierrc,.stylelintrc,bowerrc,jest.config}]
+[{*.har,*.jsb2,*.jsb3,*.json,*.jsonc,*.postman_collection,*.postman_collection.json,*.postman_environment,*.postman_environment.json,.babelrc,.eslintrc,.prettierrc,.stylelintrc,bowerrc,jest.config}]
 indent_style = space
 indent_size = 2
 
-[*.{appxmanifest,asax,ascx,aspx,axaml,build,c,c++,cc,cginc,compute,cp,cpp,cppm,cs,cshtml,cu,cuh,cxx,dtd,fs,fsi,fsscript,fsx,fx,fxh,h,hh,hlsl,hlsli,hlslinc,hpp,hxx,inc,inl,ino,ipp,ixx,master,ml,mli,mpp,mq4,mq5,mqh,nuspec,paml,razor,resw,resx,shader,skin,tpp,usf,ush,vb,xaml,xamlx,xoml,xsd}]
+[*.{appxmanifest,asax,ascx,aspx,axaml,build,c,c++,c++m,cc,ccm,cginc,compute,cp,cpp,cppm,cs,cshtml,cu,cuh,cxx,cxxm,dtd,fs,fsi,fsscript,fsx,fx,fxh,h,hh,hlsl,hlsli,hlslinc,hpp,hxx,inc,inl,ino,ipp,ixx,master,ml,mli,mpp,mq4,mq5,mqh,mxx,nuspec,paml,razor,resw,resx,shader,skin,tpp,usf,ush,uxml,vb,xaml,xamlx,xoml,xsd}]
 indent_style = space
 indent_size = 4
 tab_width = 4

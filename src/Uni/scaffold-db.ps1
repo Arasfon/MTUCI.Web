@@ -1,1 +1,0 @@
-Invoke-Expression "dotnet ef dbcontext scaffold `"Name=ConnectionStrings:Main`" Npgsql.EntityFrameworkCore.PostgreSQL --context-dir `".\Database`" --output-dir `".\Models\Database`" --force"
