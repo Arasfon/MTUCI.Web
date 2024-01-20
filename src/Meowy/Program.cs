@@ -8,6 +8,7 @@ using Meowy.Validators;
 
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.EntityFrameworkCore;
 
 using WebMarkupMin.AspNetCore8;
 
@@ -51,6 +52,13 @@ builder.Services.AddWebMarkupMin(options => options.DisablePoweredByHttpHeaders 
 builder.Services.AddScoped<IValidator<BookingFormModel>, BookingFormModelValidator>();
 
 WebApplication app = builder.Build();
+
+// Migrate DB
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    MeowyContext db = scope.ServiceProvider.GetRequiredService<MeowyContext>();
+    db.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
