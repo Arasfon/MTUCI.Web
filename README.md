@@ -25,6 +25,7 @@ Website is available on [meowy.arasfon.ru](https://meowy.arasfon.ru)
 
 - Git
 - Azure Pipelines
+- Docker
 
 - ASP.NET Core 8
 - PostgreSQL 16
