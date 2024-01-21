@@ -1,48 +1,42 @@
 <Project>
     <ItemGroup Condition="'$(Configuration)' == 'Release'">
-        <Content Update="wwwroot\css\**\*.less">
+        <Content Update="wwwroot/css/**/*.less">
             <CopyToPublishDirectory>Never</CopyToPublishDirectory>
         </Content>
-        <Content Update="wwwroot\js\**\*.ts">
+        <Content Update="wwwroot/js/**/*.ts">
             <CopyToPublishDirectory>Never</CopyToPublishDirectory>
         </Content>
     </ItemGroup>
     <PropertyGroup>
         <CompileDependsOn>
-            CompileLessDebug;
-            CompileLessRelease;
-            RollupBundleDebug;
-            RollupBundleRelease;
+            InstallNpmPackages;
+            CompileLess;
+            RollupBundle;
             $(CompileDependsOn)
         </CompileDependsOn>
         <CleanDependsOn>
             $(CleanDependsOn);
+            InstallNpmPackages;
             CleanLess;
             CleanRollup
         </CleanDependsOn>
     </PropertyGroup>
-    <Target Name="CompileLessDebug" Condition="'$(Configuration)' == 'Debug' AND '$(DesignTimeBuild)' != 'true'">
-        <Exec Command="npm install" Condition="'$(SkipNpmInstall)' != 'true'"/>
-        <Exec Command="gulp less:debug"/>
+    <Target Name="InstallNpmPackages" Condition="'$(DesignTimeBuild)' != 'true' AND '$(SkipNpmPackagesInstall)' != 'true'">
+        <Exec Command="npm install"/>
+        <PropertyGroup>
+            <SkipNpmPackagesInstall>true</SkipNpmPackagesInstall>
+        </PropertyGroup>
     </Target>
-    <Target Name="CompileLessRelease" DependsOnTargets="CleanLess" Condition="'$(Configuration)' == 'Release' AND '$(DesignTimeBuild)' != 'true'">
-        <Exec Command="npm install" Condition="'$(SkipNpmInstall)' != 'true'"/>
-        <Exec Command="gulp less:release"/>
+    <Target Name="CompileLess" DependsOnTargets="CleanLess" Condition="'$(DesignTimeBuild)' != 'true'">
+        <Exec Command="npx gulp less:$(Configuration.ToLower())"/>
     </Target>
     <Target Name="CleanLess" Condition="'$(DesignTimeBuild)' != 'true'">
-        <Exec Command="npm install" Condition="'$(SkipNpmInstall)' != 'true'"/>
-        <Exec Command="gulp less:clean"/>
+        <Exec Command="npx gulp less:clean"/>
     </Target>
-    <Target Name="RollupBundleDebug" Condition="'$(Configuration)' == 'Debug' AND '$(DesignTimeBuild)' != 'true'">
-        <Exec Command="npm install" Condition="'$(SkipNpmInstall)' != 'true'"/>
-        <Exec Command="gulp rollup:debug"/>
-    </Target>
-    <Target Name="RollupBundleRelease" DependsOnTargets="CleanRollup" Condition="'$(Configuration)' == 'Release' AND '$(DesignTimeBuild)' != 'true'">
-        <Exec Command="npm install" Condition="'$(SkipNpmInstall)' != 'true'"/>
-        <Exec Command="gulp rollup:release"/>
+    <Target Name="RollupBundle" DependsOnTargets="CleanRollup" Condition="'$(DesignTimeBuild)' != 'true'">
+        <Exec Command="npx gulp rollup:$(Configuration.ToLower())"/>
     </Target>
     <Target Name="CleanRollup" Condition="'$(DesignTimeBuild)' != 'true'">
-        <Exec Command="npm install" Condition="'$(SkipNpmInstall)' != 'true'"/>
-        <Exec Command="gulp rollup:clean"/>
+        <Exec Command="npx gulp rollup:clean"/>
     </Target>
 </Project>

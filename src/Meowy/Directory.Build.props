@@ -1,15 +1,15 @@
 <Project>
     <PropertyGroup>
-        <SkipNpmInstall Condition="'$(SkipNpmInstall)' == ''">false</SkipNpmInstall>
+        <SkipNpmPackagesInstall Condition="'$(SkipNpmPackagesInstall)' == ''">false</SkipNpmPackagesInstall>
     </PropertyGroup>
     <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
-        <LessCompile Include="**\*.less"/>
-        <LessCompile Remove="node_modules\**"/>
+        <LessCompile Include="**/*.less"/>
+        <LessCompile Remove="node_modules/**"/>
         <UpToDateCheckInput Include="@(LessCompile)"/>
     </ItemGroup>
     <ItemGroup Condition="'$(DesignTimeBuild)' != 'true'">
-        <TypeScriptCompile Include="**\*.ts"/>
-        <TypeScriptCompile Remove="node_modules\**"/>
+        <TypeScriptCompile Include="**/*.ts"/>
+        <TypeScriptCompile Remove="node_modules/**"/>
         <UpToDateCheckInput Include="@(TypeScriptCompile)"/>
     </ItemGroup>
 </Project>
