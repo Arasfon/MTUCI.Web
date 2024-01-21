@@ -28,7 +28,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app .
 
-
 RUN mkdir -p /home/app/.aspnet/DataProtection-Keys
 RUN chown $APP_UID /home/app/.aspnet/DataProtection-Keys
 
