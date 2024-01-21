@@ -15,6 +15,8 @@ using WebMarkupMin.AspNetCore8;
 // Configure services
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddEnvironmentVariables("MEOWY_");
+
 builder.Services.AddHsts(options =>
 {
     //options.Preload = true;

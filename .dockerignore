@@ -1,0 +1,8 @@
+**/bin/
+**/obj/
+**/out/
+
+Dockerfile*
+
+**/appsettings.*.json
+src/Meowy/scaffold-db.ps1
