@@ -32,7 +32,7 @@ document.getElementById("bookForm")!.addEventListener("submit", async event => {
             credentials: 'include'
         });
 
-    if (response.status === 201)
+    if (response.status === 204)
         window.location.href = "/visit/booking-thanks";
     else if (response.status === 404) {
         const errorElement = document.getElementById("bookFormError") as HTMLElement;

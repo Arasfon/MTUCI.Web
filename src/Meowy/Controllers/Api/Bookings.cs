@@ -13,6 +13,7 @@ namespace Meowy.Controllers.Api;
 
 [Route("/api/[controller]")]
 [ApiController]
+[ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
 public class Bookings(
     IValidator<BookingFormModel> validator,
     MeowyContext dbContext
@@ -48,6 +49,6 @@ public class Bookings(
             return BadRequest();
         }
 
-        return Created();
+        return NoContent();
     }
 }

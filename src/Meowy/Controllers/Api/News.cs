@@ -11,6 +11,7 @@ namespace Meowy.Controllers.Api;
 
 [Route("/api/[controller]")]
 [ApiController]
+[ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
 public class News(MeowyContext dbContext) : Controller
 {
     [HttpGet]
