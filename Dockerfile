@@ -31,6 +31,8 @@ COPY --from=build /app .
 RUN mkdir -p /home/app/.aspnet/DataProtection-Keys
 RUN chown $APP_UID /home/app/.aspnet/DataProtection-Keys
 
+VOLUME /home/app/.aspnet/DataProtection-Keys
+
 USER $APP_UID
 
 EXPOSE 8080
